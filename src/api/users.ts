@@ -1,29 +1,9 @@
 import request from '@/utils/request'
 
-export const getUsers = (params: any) =>
-  request({
-    url: '/users',
-    method: 'get',
-    params
-  })
-
 export const getUserInfo = (data: any) =>
   request({
     url: '/users/info',
     method: 'post',
-    data
-  })
-
-export const getUserByName = (username: string) =>
-  request({
-    url: `/users/${username}`,
-    method: 'get'
-  })
-
-export const updateUser = (username: string, data: any) =>
-  request({
-    url: `/users/${username}`,
-    method: 'put',
     data
   })
 
@@ -37,7 +17,10 @@ export const login = (data: any) =>
   request({
     url: '/users/login',
     method: 'post',
-    data
+    data: {
+      password: data.password,
+      user_name: data.username
+    }
   })
 
 export const logout = () =>
@@ -46,9 +29,9 @@ export const logout = () =>
     method: 'post'
   })
 
-export const register = (data: any) =>
+export const postExcelData = (data: any) =>
   request({
-    url: '/users/register',
+    url: '/update/excel',
     method: 'post',
     data
   })

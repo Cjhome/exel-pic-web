@@ -18,16 +18,9 @@ import EditorDashboard from './editor/index.vue'
   }
 })
 export default class extends Vue {
-  private currentRole = 'admin-dashboard'
-
-  get roles() {
-    return UserModule.roles
-  }
+  private currentRole = 'editor-dashboard'
 
   created() {
-    if (!this.roles.includes('admin')) {
-      this.currentRole = 'editor-dashboard'
-    }
   }
 }
 </script>

@@ -60,7 +60,8 @@ export default class extends mixins(ResizeMixin) {
   }
 
   get showTagsView() {
-    return SettingsModule.showTagsView
+    // return SettingsModule.showTagsView
+    return false
   }
 
   get fixedHeader() {

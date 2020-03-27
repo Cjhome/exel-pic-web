@@ -85,7 +85,6 @@ import PanelGroup from './components/PanelGroup.vue'
 import PieChart from './components/PieChart.vue'
 import RadarChart from './components/RadarChart.vue'
 import TodoList from './components/TodoList/index.vue'
-import TransactionTable from './components/TransactionTable.vue'
 
 const lineChartData: { [type: string]: ILineChartData } = {
   newVisitis: {
@@ -116,8 +115,7 @@ const lineChartData: { [type: string]: ILineChartData } = {
     PanelGroup,
     PieChart,
     RadarChart,
-    TodoList,
-    TransactionTable
+    TodoList
   }
 })
 export default class extends Vue {

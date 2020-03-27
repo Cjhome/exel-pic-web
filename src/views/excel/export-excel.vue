@@ -72,13 +72,25 @@
           <span>{{ scope.row.timestamp | parseTime }}</span>
         </template>
       </el-table-column>
+      <el-table-column
+        width="220"
+        align="center"
+        label="Image"
+      >
+        <template slot-scope="scope">
+          <img
+            :src="scope.row.imageurl"
+            width="50"
+            alt=""
+          >
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { getArticles } from '@/api/articles'
 import { IArticleData } from '@/api/types'
 import { formatJson } from '@/utils'
 import { exportJson2Excel } from '@/utils/excel'
@@ -108,8 +120,11 @@ export default class extends Vue {
 
   private async fetchData() {
     this.listLoading = true
-    const { data } = await getArticles({ /* Your params here */ })
-    this.list = data.items
+    // const { data } = await getArticles({ /* Your params here */ })
+    // this.list = data.items
+    // data.items.map((item: any) => {
+    //   item.imageurl = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585214871984&di=222a2ce3ff45d038a6f738a6371ef6e5&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg'
+    // })
     // Just to simulate the time of the request
     setTimeout(() => {
       this.listLoading = false
@@ -118,8 +133,8 @@ export default class extends Vue {
 
   private handleDownload() {
     this.downloadLoading = true
-    const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']
-    const filterVal = ['id', 'title', 'author', 'pageviews', 'timestamp']
+    const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date', 'Image']
+    const filterVal = ['id', 'title', 'author', 'pageviews', 'timestamp', 'imageurl']
     const list = this.list
     const data = formatJson(filterVal, list)
     exportJson2Excel(tHeader, data, this.filename !== '' ? this.filename : undefined, undefined, undefined, this.autoWidth, this.bookType)

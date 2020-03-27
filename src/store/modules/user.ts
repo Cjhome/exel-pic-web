@@ -18,8 +18,8 @@ export interface IUserState {
 @Module({ dynamic: true, store, name: 'user' })
 class User extends VuexModule implements IUserState {
   public token = getToken() || ''
-  public name = ''
-  public avatar = ''
+  public name = 'admin'
+  public avatar = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585214871984&di=222a2ce3ff45d038a6f738a6371ef6e5&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg'
   public introduction = ''
   public roles: string[] = []
   public email = ''
@@ -97,7 +97,7 @@ class User extends VuexModule implements IUserState {
     const token = role + '-token'
     this.SET_TOKEN(token)
     setToken(token)
-    await this.GetUserInfo()
+    // await this.GetUserInfo()
     resetRouter()
     // Generate dynamic accessible routes based on roles
     PermissionModule.GenerateRoutes(this.roles)

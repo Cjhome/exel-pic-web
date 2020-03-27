@@ -22,6 +22,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { postExcelData } from '@/api/users'
 import UploadExcelComponent from '@/components/UploadExcel/index.vue'
 
 @Component({
@@ -46,9 +47,13 @@ export default class extends Vue {
     return false
   }
 
-  private handleSuccess({ results, header }: { results: any, header: string[]}) {
+  private async handleSuccess({ results, header }: { results: any, header: string[]}) {
     this.tableData = results
     this.tableHeader = header
+    const { data } = await postExcelData({
+      head: header,
+      data: results
+    })
   }
 }
 </script>
