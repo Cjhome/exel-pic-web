@@ -179,6 +179,24 @@ export const asyncRoutes: RouteConfig[] = [
     path: '*',
     redirect: '/404',
     meta: { hidden: true }
+  },
+  {
+    path: '/users',
+    component: Layout,
+    redirect: '/users/list',
+    meta: {
+      title: 'users',
+      icon: 'excel',
+      hidden: true
+    },
+    children: [
+      {
+        path: '/list',
+        component: () => import(/* webpackChunkName: "export-excel" */ '@/views/users/index.vue'),
+        name: 'usersList',
+        meta: { title: 'usersList' }
+      }
+    ]
   }
 ]
 

@@ -29,9 +29,42 @@ export const logout = () =>
     method: 'post'
   })
 
+export const usersEditor = (data: any) =>
+  request({
+    url: '/users/editor',
+    method: 'post',
+    data
+  })
+
+export const usersAdd = (data: any) =>
+  request({
+    url: '/users/add',
+    method: 'post',
+    data
+  })
+
+export const usersDelete = (data: any) =>
+  request({
+    url: '/users/usersDelete',
+    method: 'post',
+    data
+  })
+
+export const userList = () =>
+  request({
+    url: '/users/list',
+    method: 'get'
+  })
+
 export const postExcelData = (data: any) =>
   request({
     url: '/update/excel',
     method: 'post',
     data
+  })
+
+export const createExcel = () =>
+  request({
+    url: '/update/create-excel',
+    method: 'get'
   })
